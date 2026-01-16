@@ -1,0 +1,38 @@
+command /armour:
+    trigger:
+        set {_menu} to chest inventory with 3 rows named "&9&lNetherite Armour"
+
+        loop numbers from 0 to 26:
+            set slot loop-number of {_menu} to minecraft:gray_stained_glass_pane named "&r"
+
+
+        set slot 10 of {_menu} to netherite helmet named "&7Netherite Helmet"
+        set slot 12 of {_menu} to netherite chestplate named "&7Netherite Chestplate"
+        set slot 14 of {_menu} to netherite leggings named "&7Netherite Leggings"
+        set slot 16 of {_menu} to netherite boots named "&7Netherite Boots"
+        open {_menu} to player
+
+on inventory click:
+    if name of event-inventory is "&9&lNetherite Armour":
+        cancel event
+        if clicked inventory is event-inventory:
+            if clicked slot is 10:
+                give player netherite helmet
+                play sound "entity.player.levelup" to player
+                send "&a&lYou have been given a netherite helmet!" to player
+                close player's inventory
+            else if clicked slot is 12:
+                give player netherite chestplate
+                play sound "entity.player.levelup" to player
+                send "&a&lYou have been given a netherite chestplate!" to player
+                close player's inventory
+            else if clicked slot is 14:
+                give player netherite leggings
+                play sound "entity.player.levelup" to player
+                send "&a&lYou have been given netherite leggings!" to player
+                close player's inventory
+            else if clicked slot is 16:
+                give player netherite boots
+                play sound "entity.player.levelup" to player
+                send "&a&lYou have been given netherite boots!" to player
+                close player's inventory
